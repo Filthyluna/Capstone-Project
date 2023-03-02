@@ -4,10 +4,10 @@ import React from "react";
 const url = "https://gutendex.com/books/";
 
 export default function Book() {
-  let id = Math.floor(Math.random() * 12000)
   const [book, setBook] = React.useState(null);
 
   React.useEffect(() => {
+    let id = Math.floor(Math.random() * 12000)
     axios.get(url + id)
       .then((res) => {
         console.log(res.data);

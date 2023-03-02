@@ -1,13 +1,13 @@
 import axios from "axios";
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 const url = "https://gutendex.com/books/";
 
-export default function Book() {
-  const [book, setBook] = React.useState(null);
+export default function App() {
+  const [book, setBook] = useState(null);
 
-  React.useEffect(() => {
-    let id = Math.floor(Math.random() * 12000)
+  useEffect(() => {
+    let id = Math.floor(Math.random() * 68819)
     axios.get(url + id)
       .then((res) => {
         console.log(res.data);
@@ -21,11 +21,11 @@ export default function Book() {
   if (!book) return null
 
   return (
-    <div className="book-info">
+    <div className="random-book">
       <h1>{book.title}</h1>
       <h2>{book.authors[0].name.split(',').reverse().join(' ')}</h2>
-      <p>{book.formats[3]}</p>
     </div>
   );
+  
 }
 

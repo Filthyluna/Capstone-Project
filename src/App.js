@@ -1,31 +1,21 @@
-import axios from "axios";
-import React, {useEffect, useState} from "react";
+import './App.css';
+import { Route, Routes } from 'react-router';
+import HomePage from './components/HomePage';
+import BookList from './components/BookList';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-const url = "https://gutendex.com/books/";
-
-export default function App() {
-  const [book, setBook] = useState(null);
-
-  useEffect(() => {
-    let id = Math.floor(Math.random() * 68819)
-    axios.get(url + id)
-      .then((res) => {
-        console.log(res.data);
-        setBook(res.data)
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }, []);
-
-  if (!book) return null
-
+function App() {
   return (
-    <div className="random-book">
-      <h1>{book.title}</h1>
-      <h2>{book.authors[0].name.split(',').reverse().join(' ')}</h2>
+    <div className="App">
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/booklist" element={<BookList />} />
+      </Routes>
+      <Footer/>
     </div>
   );
-  
 }
 
+export default App;

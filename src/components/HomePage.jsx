@@ -46,17 +46,18 @@ const HomePage = () => {
   <div>
       <div className="random-book">
 
-        <h1>{book.title}</h1>
-        <div><img src={book.image_url} alt='book-img' /></div>
-        <h2>{book.authors}</h2>
+        <div><img src={book.image_url} alt='book-img' width="300" height="400"/></div>
+        <h1><a href="https://example-data.draftbit.com/books/">{book.title}</a></h1>
+        <h2><a href="https://example-data.draftbit.com/authors/">{book.authors}</a></h2>
+        <button onClick={randomize}>Randomize</button>
       </div>
-      <button onClick={randomize}>Randomize</button>
+      
       <div>
         {books.map((book) => (
           <div key={book.id} className="book">
-            <div><img src={book.image_url} alt='book-img' /></div>
-            <h1>{book.title}</h1>
-            <h2>{book.authors}</h2>
+            <div><img src={book.image_url} alt='book-img' width="300" height="400"/></div>
+            <h1><a href="https://example-data.draftbit.com/books/">{book.title}</a></h1>
+            <h2><a href="https://example-data.draftbit.com/authors/">{book.authors}</a></h2>
           </div>
         ))}
       </div>

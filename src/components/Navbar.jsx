@@ -5,11 +5,9 @@ import '../App';
 const navbar = () => {
   return (
     <div className='navbar'>
-        <ul>
-          <Link to="/">Home</Link>
-          <br />
-          <Link to="/booklist">Book List</Link>
-        </ul>
+      <h1>Cyclopedia</h1>
+      <Link to="/booklist">Book List</Link>
+      <Link to="/">Home</Link>
     </div>
   )
 }

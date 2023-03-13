@@ -18,7 +18,7 @@ const BookList = () => {
   }, []);
 
   return (
-    <div>
+    <div className='book-list'>
       {books.map((book) => (
         <div key={book.id} className="book">
           <div><img src={book.image_url} alt='book-img' width="300" height="400"/></div>

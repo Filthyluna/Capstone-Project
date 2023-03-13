@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import '../App';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
+import ReactPaginate from 'react-paginate';
 let url = 'https://example-data.draftbit.com/books/';
 
 const HomePage = () => {
   const [book, setBook] = useState([]); //Used for random book
   const [books, setBooks] = useState([]); //Used for book list
+  
+  const navigate = useNavigate();
   let id = Math.floor(Math.random() * 240)
 
   function randomize() {
@@ -41,27 +45,51 @@ const HomePage = () => {
         console.log(error);
       })
   }, []);
+  
+  //Pagination code
+  const [pageNumber, setPageNumber] = useState(0);
+  const booksPerPage = 40;
+  const pagesVisited = pageNumber * booksPerPage; //Used to determine which books to display
+  const pageCount = Math.ceil(books.length / booksPerPage); //Rounds up to nearest whole number
+  const displayBooks = books.slice(pagesVisited, pagesVisited + booksPerPage).map((book) => (
+    <div key={book.id} className="book">
+      <div><img src={book.image_url} alt='book-img' onClick={() => navigate(`/book/${book.id}`)} /></div>
+      <h1>{book.title}</h1>
+      <h2>{book.authors}</h2>
+    </div>
+  ));
+
+  const handlePageClick = ({ selected: selectedPage }) => {
+    setPageNumber(selectedPage);
+  };
+  
+  
+  
 
   return (
   <div>
       <div className="random-book">
 
-        <div><img src={book.image_url} alt='book-img' width="300" height="400"/></div>
-        <h1><a href="https://example-data.draftbit.com/books/">{book.title}</a></h1>
-        <h2><a href="https://example-data.draftbit.com/authors/">{book.authors}</a></h2>
+        <div><img src={book.image_url} alt='book-img' onClick={() => navigate(`/book/${book.id}`)} /></div>
+        <h1>{book.title}</h1>
+        <h2>{book.authors}</h2>
         <button onClick={randomize}>Randomize</button>
       </div>
       
-      <div>
-        {books.map((book) => (
-          <div key={book.id} className="book">
-            <div><img src={book.image_url} alt='book-img' width="300" height="400"/></div>
-            <h1><a href="https://example-data.draftbit.com/books/">{book.title}</a></h1>
-            <h2><a href="https://example-data.draftbit.com/authors/">{book.authors}</a></h2>
-          </div>
-        ))}
+      <div className="book-list">
+        {displayBooks}
       </div>
-    </div>
+      <ReactPaginate
+        previousLabel={"<<"}
+        nextLabel={">>"}
+        pageCount={pageCount}
+        onPageChange={handlePageClick}
+        containerClassName={"pagination"}
+        previousLinkClassName={"previousBttn"}
+        nextLinkClassName={"nextBttn"}
+        activeClassName={"paginationActive"}
+      />
+  </div>
   );
 
 }

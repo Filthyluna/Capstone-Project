@@ -4,37 +4,132 @@
   }
 }
 
-.book, .random-book{
-  position:relative;
+.navbar{
+  background-color: #333;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.navbar :link, :visited {
+  /* Display links on right side of navbar */
+  float: right;
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
+  font-size: 20px;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.navbar h1{
+  float: left;
+  padding: 10px;
+  margin: 10px;
+  font-size: 28px;
+  color: aliceblue;
+  text-align: center;
+}
+
+.book-list{
   display: flex;
+  justify-content: center;
   align-items: center;
-  border-style: solid;
-  border-color: black;
+  text-align: center;
+  margin-left: 2%;
+  margin-right: 2%;
+  flex-wrap: wrap;
+  align-items: space-between;
+  justify-content: center;
+}
+
+.book{
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+  width: 300px;
+  height: 650px;
+  
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.book h1{
+  text-align: center;
+  font-size: 28PX;
+}
+
+.book h2{
+  text-align: center;
+  font-size: 16PX;
+}
+
+.book img{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
 }
 
 .random-book{
-  border-color: gold;
-  border-width: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 2%;
 }
 .random-book button{
-  position: absolute; top: 7px; left: 950px;
-}
-.book h1, .book h2, .random-book h1, .random-book h2{
-  margin-left: auto;
-  margin-right:20px;
+  align-items: center;
+  border-radius: 10px;
 }
 
-.book h1, .random-book h1{
-  border-left:1px solid;
-  border-right:1px solid;
-  border-radius: 100px;
-  padding-left: 200px;
-  padding-right: 200px;
-
-}
 
 .navbar{
   text-align: center;
   border-bottom: 10px;
   border-style:hidden;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+}
+
+.pagination a {
+  padding: 8px;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.pagination :hover{
+  background-color: #333;
+  text-decoration: none;
+}
+
+.previousBttn{
+  margin: 10px;
+  padding: 20px;
+  width: 10px;
+  border-radius: 10px;
+  background-color: #333;
+  color: aliceblue;
+  border: none;
+  cursor: pointer;
+}
+
+.previousBttn :hover{
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nextBttn{
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #333;
+  color: aliceblue;
+  border: none;
+  cursor: pointer;
 }

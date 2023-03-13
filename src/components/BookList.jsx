@@ -21,7 +21,7 @@ const BookList = () => {
     <div>
       {books.map((book) => (
         <div key={book.id} className="book">
-          <div><img src={book.image_url} alt='book-img'/></div>
+          <div><img src={book.image_url} alt='book-img' width="300" height="400"/></div>
           <h1>{book.title}</h1>
           <h2>{book.authors}</h2>
         </div>

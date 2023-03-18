@@ -3,7 +3,7 @@ import '../App';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import ReactPaginate from 'react-paginate';
-let url = 'https://example-data.draftbit.com/books';
+let url = 'https://example-data.draftbit.com/books/';
 
 const HomePage = () => {
   const [book, setBook] = useState([]); //Used for random book
@@ -25,7 +25,7 @@ const HomePage = () => {
 
   useEffect(() => { //Randomizer
     let id = Math.floor(Math.random() * 240 + 1)
-    axios.get(`${url}/${id}`)
+    axios.get(url+id)
       .then((res) => {
         console.log(res.data);
         setBook(res.data)

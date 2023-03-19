@@ -10,6 +10,8 @@
   top: 0;
   width: 100%;
   justify-content: space-between;
+  background: linear-gradient(to left, #ffb6d3, #b6d3ff ) ; 
+  
 }
 
 .navbar :link, :visited {
@@ -21,6 +23,7 @@
   font-size: 20px;
   color: aliceblue;
   cursor: pointer;
+
 }
 
 .navbar h1{

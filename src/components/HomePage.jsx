@@ -25,7 +25,7 @@ const HomePage = () => {
 
   useEffect(() => { //Randomizer
     let id = Math.floor(Math.random() * 240 + 1)
-    axios.get(url + id)
+    axios.get(url+id)
       .then((res) => {
         console.log(res.data);
         setBook(res.data)
@@ -48,9 +48,12 @@ const HomePage = () => {
   
   //Pagination code
   const [pageNumber, setPageNumber] = useState(0);
+  //books per page depends on search bar
   const booksPerPage = 40;
   const pagesVisited = pageNumber * booksPerPage; //Used to determine which books to display
   const pageCount = Math.ceil(books.length / booksPerPage); //Rounds up to nearest whole number
+
+  //Maps through books array and displays the books
   const displayBooks = books.slice(pagesVisited, pagesVisited + booksPerPage).map((book) => (
     <div key={book.id} className="book">
       <div><img src={book.image_url} alt='book-img' onClick={() => navigate(`/book/${book.id}`)} /></div>
@@ -62,14 +65,10 @@ const HomePage = () => {
   const handlePageClick = ({ selected: selectedPage }) => {
     setPageNumber(selectedPage);
   };
-  
-  
-  
 
   return (
-  <div>
-      <div className="random-book">
-
+    <div>
+           <div className="random-book">
         <div><img src={book.image_url} alt='book-img' onClick={() => navigate(`/book/${book.id}`)} /></div>
         <h1>{book.title}</h1>
         <h2>{book.authors}</h2>

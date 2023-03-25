@@ -137,6 +137,7 @@
   cursor: pointer;
 }
 
+
 .search{
   justify-content: center;
   align-items: center;
@@ -149,4 +150,11 @@
   cursor: pointer;
   width: 300px;
   height: 25px;
+}
+
+.book-details{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 2%; 
 }

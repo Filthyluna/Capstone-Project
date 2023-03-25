@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../App';
 import { useNavigate } from 'react-router';
-import Popup from 'reactjs-popup';
 import ReactPaginate from 'react-paginate';
 import axios from 'axios';
 let url = 'https://example-data.draftbit.com/books?_limit=240'

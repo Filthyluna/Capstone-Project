@@ -56,14 +56,13 @@ const BookList = () => {
 
   return (
       <div>
-       	<div className="search">
- 	 	 <br></br>
-      		 <input type="text" id="search"   placeholder="Search for a book" onKeyUp={searchBooks} />
-    	</div>
+      <div className="search">
+        <input type="text" id="search" placeholder="Search for a book or author" onKeyUp={searchBooks} />
+      </div>
 
 
- 	<div className="book-list">
-        	{displayBooks}
+      <div className="book-list">
+        {displayBooks}
       	</div>
 
        <ReactPaginate

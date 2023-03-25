@@ -22,6 +22,10 @@ const HomePage = () => {
         console.log(error);
       })
   }
+  function scroll () {
+      window.scrollTo({top:0, left:0, behavior: 'smooth'});
+  }
+
 
   useEffect(() => { //Randomizer
     let id = Math.floor(Math.random() * 240 + 1)
@@ -45,14 +49,13 @@ const HomePage = () => {
         console.log(error);
       })
   }, []);
-  
+
   //Pagination code
   const [pageNumber, setPageNumber] = useState(0);
   //books per page depends on search bar
   const booksPerPage = 40;
   const pagesVisited = pageNumber * booksPerPage; //Used to determine which books to display
   const pageCount = Math.ceil(books.length / booksPerPage); //Rounds up to nearest whole number
-
   //Maps through books array and displays the books
   const displayBooks = books.slice(pagesVisited, pagesVisited + booksPerPage).map((book) => (
     <div key={book.id} className="book">
@@ -87,6 +90,9 @@ const HomePage = () => {
         previousLinkClassName={"previousBttn"}
         nextLinkClassName={"nextBttn"}
         activeClassName={"paginationActive"}
+        onPageActive = {scroll}
+        onClick = {scroll} 
+
       />
   </div>
   );

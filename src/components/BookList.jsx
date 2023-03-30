@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../App';
 import { useNavigate } from 'react-router';
-
 import ReactPaginate from 'react-paginate';
 import axios from 'axios';
 let url = 'https://example-data.draftbit.com/books?_limit=240'
@@ -33,6 +32,10 @@ const BookList = () => {
       }
     }
   }
+  function scroll () {
+      window.scrollTo({top:0, left:0, behavior: 'smooth'});
+  }
+
 
   //Pagination code
   const [pageNumber, setPageNumber] = useState(0);
@@ -74,6 +77,8 @@ const BookList = () => {
         previousLinkClassName={"previousBttn"}
         nextLinkClassName={"nextBttn"}
         activeClassName={"paginationActive"}
+	onPageActive = {scroll}
+        onClick  = {scroll} 
       />
 
       </div>

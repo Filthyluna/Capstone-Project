@@ -5,6 +5,7 @@ import BookList from './components/BookList';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BookDetails from './components/BookDetails';
+import Favorites from './components/Favorites';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/BookList" element={<BookList />} /> 
         <Route path="/book/:id" element={<BookDetails/>} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
       <Footer/>
     </div>

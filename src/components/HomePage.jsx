@@ -81,19 +81,28 @@ const HomePage = () => {
   };
 
   function searchBooks() {
-    let input = document.getElementById('search').value //Get input from search bar
-    input = input.toLowerCase(); //Convert to lowercase
-    let target = document.getElementsByClassName('book'); //Get all books
-    for (let i = 0; i < target.length; i++) {
-      if (!target[i].innerHTML.toLowerCase().includes(input)) {
-        target[i].style.display = "none";
-      }
-      else {
-        target[i].style.display = "block"; //Show books that match search
-      }
+    //Search books and remove pagination
+    let search = document.getElementById('search').value;
+    let filteredBooks = books.filter((book) => {
+      return book.title.toLowerCase().includes(search.toLowerCase()) || book.authors.toLowerCase().includes(search.toLowerCase());
+    }
+    );
+    setBooks(filteredBooks);
+    setPageNumber(0);
+    
+    //Backspace to reset books and pagination
+    if (search === '') {
+      axios.get(url)
+        .then((res) => {
+          console.log(res.data);
+          setBooks(res.data)
+        })
+        .catch((error) => {
+          console.log(error);
+        })
     }
   }
-  
+
   // eslint-disable-next-line 
   function scroll () {
       window.scrollTo({top:0, left:0, behavior: 'smooth'});

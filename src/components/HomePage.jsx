@@ -80,15 +80,37 @@ const HomePage = () => {
     setPageNumber(selectedPage);
   };
 
+  function searchBooks() {
+    let input = document.getElementById('search').value //Get input from search bar
+    input = input.toLowerCase(); //Convert to lowercase
+    let target = document.getElementsByClassName('book'); //Get all books
+    for (let i = 0; i < target.length; i++) {
+      if (!target[i].innerHTML.toLowerCase().includes(input)) {
+        target[i].style.display = "none";
+      }
+      else {
+        target[i].style.display = "block"; //Show books that match search
+      }
+    }
+  }
+  
+  // eslint-disable-next-line 
+  function scroll () {
+      window.scrollTo({top:0, left:0, behavior: 'smooth'});
+  }
+
   return (
     <div>
-           <div className="random-book">
+      <div className="search">
+        <input type="text" id="search" placeholder="Search for a book or author" onKeyUp={searchBooks} />
+      </div>
+      <div className="random-book">
         <div><img src={book.image_url} alt='book-img' onClick={() => navigate(`/book/${book.id}`)} /></div>
         <h1>{book.title}</h1>
         <h2>{book.authors}</h2>
         <button onClick={randomize}>Randomize</button>
       </div>
-      
+
       <div className="book-list">
         {displayBooks}
       </div>

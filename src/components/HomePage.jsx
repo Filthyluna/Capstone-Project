@@ -13,6 +13,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   let id = Math.floor(Math.random() * 240)
 
+  //Randomizer button code
   function randomize() {
     axios.get(url + id)
       .then((res) => {
@@ -23,12 +24,8 @@ const HomePage = () => {
         console.log(error);
       })
   }
-  function scroll () {
-      window.scrollTo({top:0, left:0, behavior: 'smooth'});
-  }
 
-
-  useEffect(() => { //Randomizer
+  useEffect(() => { //Randomizer for page load
     let id = Math.floor(Math.random() * 240 + 1)
     axios.get(url+id)
       .then((res) => {
@@ -80,6 +77,12 @@ const HomePage = () => {
     setPageNumber(selectedPage);
   };
 
+  //Smooth scroll when changing pages
+  function scroll () {
+    window.scrollTo({top:0, left:0, behavior: 'smooth'});
+}
+
+
   function searchBooks() {
     //Search books and remove pagination
     let search = document.getElementById('search').value;
@@ -89,7 +92,7 @@ const HomePage = () => {
     );
     setBooks(filteredBooks);
     setPageNumber(0);
-    
+
     //Backspace to reset books and pagination
     if (search === '') {
       axios.get(url)
@@ -101,11 +104,6 @@ const HomePage = () => {
           console.log(error);
         })
     }
-  }
-
-  // eslint-disable-next-line 
-  function scroll () {
-      window.scrollTo({top:0, left:0, behavior: 'smooth'});
   }
 
   return (

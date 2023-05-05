@@ -68,9 +68,9 @@
   font-size: 16PX;
 }
 
-.book img{
-  width: 100%;
-  height: 100%;
+.book-img{
+  width: 80%;
+  height: 70%;
   border-radius: 10px;
 }
 
@@ -187,4 +187,45 @@
 .footer{
   text-align: left;
   padding-top: 120px;
+}
+
+/* Popup styling */
+.popup{
+  width: 40%;
+  margin: 0 auto;
+  background: white;
+  padding: 35px;
+  border: 2px solid #000000;
+  border-radius: 20px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.popup-inner{
+  position:relative;
+  padding:20px;
+  width:100%;
+  max-width:640px;
+  height:550px;
+  overflow:scroll;
+  opacity:100%;
+  background-color:white;
+
+}
+
+.popup .close {
+  position: absolute;
+  right: 30%;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.popup img{
+  width:20%;
+  height:20%;
+  object-fit:cover;
+  object-position:center;
 }

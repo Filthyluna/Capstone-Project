@@ -3,6 +3,7 @@ import '../App';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 import ReactPaginate from 'react-paginate';
+import { useAppContext } from './context/appContext';
 let url = 'https://example-data.draftbit.com/books/';
 
 const HomePage = () => {
@@ -50,6 +51,13 @@ const HomePage = () => {
       })
   }, []);
 
+  //favorites code
+  const {favorites,addToFavorites,removeFromFavorites} = useAppContext()
+  const favoritesChecker = (id) => {
+    const boolean = favorites.some((book)=>book.id === id)
+    return boolean
+  }
+
   //Pagination code
   const [pageNumber, setPageNumber] = useState(0);
   //books per page depends on search bar
@@ -60,6 +68,9 @@ const HomePage = () => {
   const displayBooks = books.slice(pagesVisited, pagesVisited + booksPerPage).map((book) => (
     <div key={book.id} className="book">
       <div><img src={book.image_url} alt='book-img' onClick={() => navigate(`/book/${book.id}`)} /></div>
+      <div>
+        {favoritesChecker(book.id) ? <button onClick={()=> removeFromFavorites(book.id)}>Remove from Favorites</button> : <button onClick={()=>addToFavorites(book)}>Add to Favorites</button>}
+      </div>
       <h1>{book.title}</h1>
       <h2>{book.authors}</h2>
     </div>

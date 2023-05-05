@@ -113,7 +113,9 @@ const HomePage = () => {
         <h2>{book.authors}</h2>
         <button onClick={randomize}>Randomize</button>
       </div>
+      <h1><center>Full book library</center> </h1>
       <div className="book-list">
+
         {displayBooks}
       </div>
       <ReactPaginate

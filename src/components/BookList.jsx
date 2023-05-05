@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import '../App';
 import { useNavigate } from 'react-router';
 import ReactPaginate from 'react-paginate';
+import Popup from './Popup';
 import axios from 'axios';
 let url = 'https://example-data.draftbit.com/books?_limit=240'
 
@@ -32,9 +33,12 @@ const BookList = () => {
       }
     }
   }
+    // scroll up 
   function scroll () {
       window.scrollTo({top:0, left:0, behavior: 'smooth'});
   }
+// Buttons for popup 
+  const [buttonPopup, setButtonPopup] = useState(false);
 
 
   //Pagination code
@@ -44,10 +48,23 @@ const BookList = () => {
   const pagesVisited = pageNumber * booksPerPage; //Used to determine which books to display
   const pageCount = Math.ceil(books.length / booksPerPage); //Rounds up to nearest whole number
 
-  //Maps through books array and displays the books
+  //Maps through books array and displays the books + POPUP
+ 
   const displayBooks = books.slice(pagesVisited, pagesVisited + booksPerPage).map((book) => (
     <div key={book.id} className="book">
-      <div><img src={book.image_url} alt='book-img' onClick={() => navigate(`/book/${book.id}`)} /></div>
+      <div><img src={book.image_url} alt='book-img' onClick={() => setButtonPopup(true)} /></div>
+       <Popup trigger = {buttonPopup}  setTrigger ={setButtonPopup}>
+   	<div className="book-details">
+       <h1>{book.title}</h1>
+        <h2>{book.authors}</h2>
+        <h3>Description</h3>
+        <p>{book.description}</p>
+        <h3>Genres</h3>
+        <p>{book.genres}</p>
+
+	</div> 
+      </Popup>
+  
       <h1>{book.title}</h1>
       <h2>{book.authors}</h2>
     </div>
@@ -59,6 +76,7 @@ const BookList = () => {
 
   return (
       <div>
+ 
       <div className="search">
         <input type="text" id="search" placeholder="Search for a book or author" onKeyUp={searchBooks} />
       </div>

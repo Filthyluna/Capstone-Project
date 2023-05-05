@@ -4,7 +4,6 @@ import HomePage from './components/HomePage';
 import BookList from './components/BookList';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Popup from './components/Popup';
 import BookDetails from './components/BookDetails';
 function App() {
   return (

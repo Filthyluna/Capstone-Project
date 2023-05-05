@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App';
 import { useNavigate } from 'react-router';
 import ReactPaginate from 'react-paginate';
@@ -8,7 +8,7 @@ let url = 'https://example-data.draftbit.com/books?_limit=240'
 
 const BookList = () => {
   const [books, setBook] = useState([]);
- const navigate = useNavigate();
+  // const navigate = useNavigate();
   useEffect(() => {
     axios.get(url)
       .then((res) => {
@@ -33,11 +33,11 @@ const BookList = () => {
       }
     }
   }
-    // scroll up 
-  function scroll () {
-      window.scrollTo({top:0, left:0, behavior: 'smooth'});
+  // scroll up 
+  function scroll() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }
-// Buttons for popup 
+  // Buttons for popup 
   const [buttonPopup, setButtonPopup] = useState(false);
 
 
@@ -49,22 +49,22 @@ const BookList = () => {
   const pageCount = Math.ceil(books.length / booksPerPage); //Rounds up to nearest whole number
 
   //Maps through books array and displays the books + POPUP
- 
+
   const displayBooks = books.slice(pagesVisited, pagesVisited + booksPerPage).map((book) => (
     <div key={book.id} className="book">
       <div><img src={book.image_url} alt='book-img' onClick={() => setButtonPopup(true)} /></div>
-       <Popup trigger = {buttonPopup}  setTrigger ={setButtonPopup}>
-   	<div className="book-details">
-       <h1>{book.title}</h1>
-        <h2>{book.authors}</h2>
-        <h3>Description</h3>
-        <p>{book.description}</p>
-        <h3>Genres</h3>
-        <p>{book.genres}</p>
+      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+        <div className="book-details">
+          <h1>{book.title}</h1>
+          <h2>{book.authors}</h2>
+          <h3>Description</h3>
+          <p>{book.description}</p>
+          <h3>Genres</h3>
+          <p>{book.genres}</p>
 
-	</div> 
+        </div>
       </Popup>
-  
+
       <h1>{book.title}</h1>
       <h2>{book.authors}</h2>
     </div>
@@ -75,8 +75,8 @@ const BookList = () => {
   };
 
   return (
-      <div>
- 
+    <div>
+
       <div className="search">
         <input type="text" id="search" placeholder="Search for a book or author" onKeyUp={searchBooks} />
       </div>
@@ -84,9 +84,9 @@ const BookList = () => {
 
       <div className="book-list">
         {displayBooks}
-      	</div>
+      </div>
 
-       <ReactPaginate
+      <ReactPaginate
         previousLabel={"<<"}
         nextLabel={">>"}
         pageCount={pageCount}
@@ -95,12 +95,12 @@ const BookList = () => {
         previousLinkClassName={"previousBttn"}
         nextLinkClassName={"nextBttn"}
         activeClassName={"paginationActive"}
-	onPageActive = {scroll}
-        onClick  = {scroll} 
+        onPageActive={scroll}
+        onClick={scroll}
       />
 
-      </div>
-       );
+    </div>
+  );
 }
 
 export default BookList

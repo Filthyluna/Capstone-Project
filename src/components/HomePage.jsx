@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import '../App';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
-import ReactPaginate from 'react-paginate';
 import { useAppContext } from './context/appContext';
+import ReactPaginate from 'react-paginate';
+import Popup from './Popup';
 let url = 'https://example-data.draftbit.com/books/';
 
 const HomePage = () => {
@@ -52,7 +53,7 @@ const HomePage = () => {
   }, []);
 
   //favorites code
-  const {favorites,addToFavorites,removeFromFavorites} = useAppContext()
+  const {favorites, addToFavorites, removeFromFavorites} = useAppContext()
   const favoritesChecker = (id) => {
     const boolean = favorites.some((book)=>book.id === id)
     return boolean
@@ -64,15 +65,33 @@ const HomePage = () => {
   const booksPerPage = 40;
   const pagesVisited = pageNumber * booksPerPage; //Used to determine which books to display
   const pageCount = Math.ceil(books.length / booksPerPage); //Rounds up to nearest whole number
-  //Maps through books array and displays the books
+
+  // Buttons for popup 
+  const [buttonPopup, setButtonPopup] = useState(false);
+  
+  //Maps through books array and displays the books + POPUP
+
   const displayBooks = books.slice(pagesVisited, pagesVisited + booksPerPage).map((book) => (
     <div key={book.id} className="book">
-      <div><img src={book.image_url} alt='book-img' onClick={() => navigate(`/book/${book.id}`)} /></div>
+      <div>
+        <img src={book.image_url} alt='book-img' onClick={() => setButtonPopup(true)} />
+      </div>
+      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+        <div className="book-details-popup">
+          <h1>{book.title}</h1>
+          <h2>{book.authors}</h2>
+          <img src={book.image_url} alt='book-img' />
+          <h3>Description</h3>
+          <p>{book.description}</p>
+          <h3>Genres</h3>
+          <p>{book.genres}</p>
+        </div>
+      </Popup>
+      <h1>{book.title}</h1>
+      <h2>{book.authors}</h2>
       <div>
         {favoritesChecker(book.id) ? <button onClick={()=> removeFromFavorites(book.id)}>Remove from Favorites</button> : <button onClick={()=>addToFavorites(book)}>Add to Favorites</button>}
       </div>
-      <h1>{book.title}</h1>
-      <h2>{book.authors}</h2>
     </div>
   ));
 
@@ -82,13 +101,13 @@ const HomePage = () => {
 
   return (
     <div>
-           <div className="random-book">
+      <div className="random-book">
         <div><img src={book.image_url} alt='book-img' onClick={() => navigate(`/book/${book.id}`)} /></div>
         <h1>{book.title}</h1>
         <h2>{book.authors}</h2>
         <button onClick={randomize}>Randomize</button>
       </div>
-      
+
       <div className="book-list">
         {displayBooks}
       </div>
@@ -101,11 +120,11 @@ const HomePage = () => {
         previousLinkClassName={"previousBttn"}
         nextLinkClassName={"nextBttn"}
         activeClassName={"paginationActive"}
-        onPageActive = {scroll}
-        onClick = {scroll} 
+        onPageActive={scroll}
+        onClick={scroll}
 
       />
-  </div>
+    </div>
   );
 
 }

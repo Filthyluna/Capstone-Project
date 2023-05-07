@@ -16,13 +16,17 @@
   position:fixed;
 }
 /**/
+
+body{
+  background-color: rgb(253, 224, 198);
+}
 .navbar{
   background-color: #333;
   overflow: hidden;
   top: 0;
   width: 100%;
   justify-content: space-between;
-  background: linear-gradient(to left, #ffb6d3, #b6d3ff ) ; 
+  background: linear-gradient(to left, #206b42, #3363aa ) ; 
   
 }
 
@@ -65,7 +69,6 @@
   margin-right: 2px;
   flex-wrap: wrap;
   text-align: center;
-  
 }
 
 .book{
@@ -79,14 +82,17 @@
   cursor: pointer;
 }
 
-.book h1{
+.book h1, .books h1, .random-book h1{
   text-align: center;
-  font-size: 26PX;
+  font-size: 24PX;
 }
 
-.book h2{
+.book h2, .books h2, .random-book h2{
   text-align: center;
   font-size: 16PX;
+  /*background-color:pink;*/
+  font-style: italic;
+  color: rgb(87, 87, 87);
 }
 
 .book-img{
@@ -105,11 +111,7 @@
   transition: 0.3s;
   cursor: pointer;
 }
-.books h1, h2{
-  text-align: center;
-  font-size: 16px;
 
-}
 .book-imgs{
   width: 80%;
   height: 70%;
@@ -122,6 +124,7 @@
   text-align: center;
   margin: 2%;
 }
+
 .random-book button{
   align-items: center;
   border-radius: 10px;

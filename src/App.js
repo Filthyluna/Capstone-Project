@@ -8,7 +8,7 @@ import BookDetails from './components/BookDetails';
 import Favorites from './components/Favorites';
 function App() {
   //========================== Loading Page
-  const [loading, setLoading] = useState(true);
+  const [setLoading] = useState(true);
   const spinner = document.getElementById('spinner');
   if(spinner){
     setTimeout(()=>{

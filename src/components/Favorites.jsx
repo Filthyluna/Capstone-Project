@@ -16,12 +16,12 @@ const Favorites = () => {
         <div key={book.id} className="books">
           <div><img src={book.image_url} alt='book-imgs' onClick={() => navigate(`/book/${book.id}`)} /></div>
           <div>
-            {favoritesChecker(book.id) ? <button onClick={() => removeFromFavorites(book.id)}>Remove from Favorites</button> : <button onClick={() => addToFavorites(book)}>Add to Favorites</button>}
+            {favoritesChecker(book.id) ? <button onClick={() => removeFromFavorites(book.id)}>Remove</button> : <button onClick={() => addToFavorites(book)}>Add to Favorites</button>}
           </div>
           <h1>{book.title}</h1>
           <h2>{book.authors}</h2>
         </div>
-      )) : <h1>No favorite books yet</h1>}
+      )) : <h1 className='no-favorites'>No favorite books yet</h1>}
     </div>
   )
 }

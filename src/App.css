@@ -14,11 +14,12 @@
 /*Loading page Spinner*/
 .spinner{
   position:fixed;
+  z-index: 999;
 }
 /**/
 
 body{
-  background-color: rgb(253, 224, 198);
+  background-color: rgb(253, 242, 231);
 }
 .navbar{
   background-color: #333;
@@ -61,14 +62,6 @@ body{
   flex-wrap: wrap;
   align-items: space-between;
   justify-content: center;
-}
-
-.favorites{
-  display: inline-flex;
-  margin-left: 2px;
-  margin-right: 2px;
-  flex-wrap: wrap;
-  text-align: center;
 }
 
 .book{
@@ -127,7 +120,56 @@ body{
 
 .random-book button{
   align-items: center;
+  border-radius: 5px;
+  border-style: none;
+  background-color: #a3c1ee;
+  color: rgb(1, 29, 54);
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px;
+  margin-bottom: 20px;
+}
+
+.no-favorites{
+  justify-content: center;
+  align-items: center;
+} 
+
+.favorites{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 2%;
+  flex-wrap: wrap;
+  align-items: space-between;
+  justify-content: center;
+}
+
+.favorites button{
+  align-items: center;
+  border-radius: 5px;
+  border-style: none;
+  background-color: #eea3b9;
+  color: rgb(54, 1, 5);
+  font-weight: bold;
+  margin: 5px;
+  margin-bottom: 20px;
+}
+
+.favorites img{
+  width: 80%;
+  height: 70%;
   border-radius: 10px;
+}
+
+/* Style heart button to be top right of image */
+.heart{
+  width: 2rem;
+  position: absolute;
+  margin: 10px;
+  margin-right: 20px;
+  z-index: 1;
 }
 
 
@@ -228,7 +270,7 @@ body{
 }
 
 .footer{
-  text-align: left;
+  text-align: center;
   padding-top: 120px;
 }
 

@@ -146,15 +146,11 @@ body{
   justify-content: center;
 }
 
-.favorites button{
-  align-items: center;
-  border-radius: 5px;
-  border-style: none;
-  background-color: #eea3b9;
-  color: rgb(54, 1, 5);
-  font-weight: bold;
-  margin: 5px;
-  margin-bottom: 20px;
+.favorites .heart{
+  width: 2rem;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 5rem;
 }
 
 .favorites img{
@@ -163,8 +159,7 @@ body{
   border-radius: 10px;
 }
 
-/* Style heart button to be top right of image */
-.heart{
+.book .heart{
   width: 2rem;
   position: absolute;
   margin: 10px;

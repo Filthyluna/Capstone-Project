@@ -32,8 +32,7 @@ const Favorites = () => {
     <div className='favorites'>
       {favorites.length > 0 ? favorites.map((book) => (
         <div key={book.id} className="books">
-          <div><img src={book.image_url} alt='book-imgs' onClick={() => navigate(`/book/${book.id}`)} /></div>
-          <div>
+          <div className='favorites-button'>
             <Heart
               key={book.id}
               className="heart"
@@ -46,6 +45,7 @@ const Favorites = () => {
               style={{ fill: active.includes(book.id) ? "red" : "white" }}
             />
           </div>
+          <div><img src={book.image_url} alt='book-imgs' onClick={() => navigate(`/book/${book.id}`)} /></div>
           <h1>{book.title}</h1>
           <h2>{book.authors}</h2>
         </div>

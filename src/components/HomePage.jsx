@@ -156,7 +156,6 @@ const HomePage = () => {
   };
 
 
-
   return (
     <div>
       <div className="search">
@@ -170,7 +169,6 @@ const HomePage = () => {
       </div>
       <h1><center>Full book library</center> </h1>
       <div className="book-list">
-
         {displayBooks}
       </div>
       <ReactPaginate

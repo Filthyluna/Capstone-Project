@@ -34,15 +34,15 @@
 
 }
 
-/*Loading page Spinner*/
-.spinner{
+/* Loading page Spinner*/
+/* .spinner{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   z-index: 100;
-}
-/**/
+} */
+/* */
 
 body{
   background-color: rgb(253, 242, 231);

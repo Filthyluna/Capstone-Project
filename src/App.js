@@ -9,17 +9,19 @@ import Favorites from './components/Favorites';
 function App() {
   //========================== Loading Page
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
+  const spinner = document.getElementById('spinner');
+  if(loading){
+    setTimeout(()=>{
+      spinner.style.display="none";
       setLoading(false);
-    }, 2000);
-  }, []);
-  if (loading) {
-    return (
-      <div className="loading">
-        <h1>Loading...</h1>
-      </div>
-    );
+    }, 1000);
+  }
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
   }
   //==========================
   return (

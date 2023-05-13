@@ -8,20 +8,18 @@ import BookDetails from './components/BookDetails';
 import Favorites from './components/Favorites';
 function App() {
   //========================== Loading Page
-  const [setLoading] = useState(true);
-  const spinner = document.getElementById('spinner');
-  if(spinner){
-    setTimeout(()=>{
-      spinner.style.display="none";
-      setLoading(false);
-    }, 1000);
-  }
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-  
-  window.onbeforeunload = function () {
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+  if (loading) {
+    return (
+      <div className="loading">
+        <h1>Loading...</h1>
+      </div>
+    );
   }
   //==========================
   return (

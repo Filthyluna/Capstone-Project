@@ -1,5 +1,5 @@
 # Capstone Project
-##  URL to the project: https://cyclopedias.netlify.app
+##  URL to the project: https://filthyluna.github.io/Capstone-Project/
 # Capstone project Requirements
 # You **must** use node and/or yarn in order to run the application locally.
 # Steps for node js installation:

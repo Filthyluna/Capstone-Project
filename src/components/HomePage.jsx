@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import { useAppContext } from './context/appContext';
 import ReactPaginate from 'react-paginate';
 import Popup from 'reactjs-popup';
-import Heart from "react-heart";
+import Heart from "react-animated-heart";
 let url = 'https://example-data.draftbit.com/books/';
 
 const HomePage = () => {
